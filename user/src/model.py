@@ -11,6 +11,7 @@ class User(db.Model):
     def save(self):
         db.session.add(self)
         db.session.commit()
+        return self
 
     def __repr__(self):
         return 'User {}'.format(self.name)
@@ -19,9 +20,7 @@ class User(db.Model):
 class UserSerializer(object):
     def __init__(self, data):
         if isinstance(data, User):
-            self.user = data.__dict__
-            self.user.pop('_sa_instance_state')
-            self.data = self.user
+            self.data = {'id': data.id, 'name': data.name}
         else:
             self.users = [user.__dict__ for user in data]
             [user.pop('_sa_instance_state') for user in self.users]
