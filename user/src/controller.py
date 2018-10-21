@@ -15,7 +15,7 @@ def create_user():
     name = request.json.get('name', None)
 
     if not name:
-        return 'name parameter missing', 403
+        return jsonify(message='name parameter missing'), 403
 
     user = User(name=name).save()
 

@@ -17,3 +17,10 @@ class TestController(object):
 
         assert response.status_code == 201
         assert response.json == data
+
+    def test_create_user_without_name(self, client):
+        data = {}
+        response = client.post('/users/', json=data)
+
+        assert response.status_code == 403
+        assert response.json == {'message': 'name parameter missing'}
