@@ -2,8 +2,8 @@ FROM python:3.7-alpine
 
 MAINTAINER Willian Frantz willianluigii@gmail.com
 
-ADD . /blog-post
+ADD . /post
 
-RUN pip install -r /blog-post/requirements.txt
+RUN pip install -r /post/requirements.txt
 
-CMD ["gunicorn", "-w 4", "-b 0.0.0.0:80", "blog-post.main:app"]
+CMD ["gunicorn", "-w 4", "-b 0.0.0.0:80", "post.main:app"]

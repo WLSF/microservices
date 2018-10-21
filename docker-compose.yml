@@ -1,16 +1,33 @@
 version: '3'
 services:
   blog-user:
-    build: blog-user
+    build: user
     ports:
       - 8000:80
+    env_file:
+      - ./user/.env
+    links:
+      - db-user:db
+
+  db-user:
+    image: postgres:9.6
+    volumes:
+      - ./docker/user/db:/var/lib/postgresql/data
+    environment:
+      - "POSTGRES_DB=${DB_DATABASE}"
+      - "POSTGRES_USER=${DB_USERNAME}"
+      - "POSTGRES_PASSWORD=${DB_PASSWORD}"
+    ports:
+      - "${DB_PORT}:5432"
+    env_file:
+      - ./user/.env
 
   blog-post:
-    build: blog-post
+    build: post
     ports:
       - 8001:80
 
   blog-reply:
-    build: blog-reply
+    build: reply
     ports:
       - 8002:80

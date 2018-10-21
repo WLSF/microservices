@@ -2,8 +2,8 @@ FROM python:3.7-alpine
 
 MAINTAINER Willian Frantz willianluigii@gmail.com
 
-ADD . /blog-reply
+ADD . /reply
 
-RUN pip install -r /blog-reply/requirements.txt
+RUN pip install -r /reply/requirements.txt
 
-CMD ["gunicorn", "-w 4", "-b 0.0.0.0:80", "blog-reply.main:app"]
+CMD ["gunicorn", "-w 4", "-b 0.0.0.0:80", "reply.main:app"]
