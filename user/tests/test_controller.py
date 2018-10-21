@@ -10,3 +10,10 @@ class TestController(object):
 
         assert response.status_code == 200
         assert response.json == [user]
+
+    def test_create_user(self, client):
+        data = {'id': 1, 'name': 'Willian Frantz'}
+        response = client.post('/users/', json=data)
+
+        assert response.status_code == 201
+        assert response.json == data
