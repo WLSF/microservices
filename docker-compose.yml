@@ -1,0 +1,16 @@
+version: '3'
+services:
+  blog-user:
+    build: blog-user
+    ports:
+      - 8000:80
+
+  blog-post:
+    build: blog-post
+    ports:
+      - 8001:80
+
+  blog-reply:
+    build: blog-reply
+    ports:
+      - 8002:80
