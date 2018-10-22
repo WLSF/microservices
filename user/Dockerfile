@@ -1,7 +1,5 @@
 FROM python:3.6
 
-MAINTAINER Willian Frantz willianluigii@gmail.com
-
 ADD . /user
 
 RUN pip install -r /user/requirements.txt

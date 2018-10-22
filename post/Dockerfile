@@ -1,6 +1,4 @@
-FROM python:3.7-alpine
-
-MAINTAINER Willian Frantz willianluigii@gmail.com
+FROM python:3.6
 
 ADD . /post
 
